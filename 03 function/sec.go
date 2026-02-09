@@ -1,13 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
-func split(sum int) (x, y int) {
-	x = sum * 4 / 9
-	y = sum - x
-	return
-}
+var m int = 20000
 
 func main() {
-	fmt.Println(split(17))
+	var j int = m
+	fmt.Println("Go has strict rules for curly braces!", m)
+	j = 233333333333
+	fmt.Println("mmmmmmmmmm", j, m)
 }
