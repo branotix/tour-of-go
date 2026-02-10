@@ -2,30 +2,41 @@ package main
 
 import "fmt"
 
-type Animal interface {
-	Speak() string // যে-ই এনিমেল হতে চায়, তাকে অবশ্যই Speak() করতে হবে
+type Human interface {
+	sex() string
 }
 
-type Dog struct{}
-
-func (d Dog) Speak() string {
-	return "Woof! Woof!"
+type AdultBoy struct {
+	age             int
+	sextime         int
+	sallaryPerMonth float64
 }
 
-type Cat struct{}
-
-func (c Cat) Speak() string {
-	return "Meow!"
+func (b AdultBoy) sex() string {
+	return fmt.Sprintf("I am adult boy, my sex time is %v min", b.sextime)
 }
 
-func MakeItSpeak(a Animal) {
-	fmt.Println(a.Speak())
+type AdultGirl struct {
+	age        int
+	orgasmtime int
+	boobsSize  float64
+}
+
+func (g AdultGirl) sex() string {
+	return fmt.Sprintf("I am adult girl, my orgasm time is %v min", g.orgasmtime)
+}
+
+// এই ফাংশনটা ইন্টারফেস রিসিভ করে সরাসরি স্ট্রিং রিটার্ন করবে
+func common(h Human) string {
+	return h.sex()
 }
 
 func main() {
-	d := Dog{}
-	c := Cat{}
+	// ভ্যালু দিয়ে অবজেক্ট তৈরি
+	pulock := AdultBoy{age: 25, sextime: 15}
+	anisha := AdultGirl{age: 22, orgasmtime: 10}
 
-	MakeItSpeak(d) // আউটপুট: Woof!
-	MakeItSpeak(c) // আউটপুট: Meow!
+	// এখন প্রিন্ট হবে ম্যজিক!
+	fmt.Println(common(pulock))
+	fmt.Println(common(anisha))
 }
